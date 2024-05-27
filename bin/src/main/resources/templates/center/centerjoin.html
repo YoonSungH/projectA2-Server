@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/layout1}">
+
+<!-- 사용자 스크립트 추가 -->
+<th:block layout:fragment="script">
+    <script>
+    $(document).ready(function(){
+        $("#btnJoin").click(function() {
+            // 유효성 검사
+            if ($("#branch_name").val() == "") {
+                alert("지점명을 입력하세요")
+                $("#branch_name").focus();
+                return false;
+            }
+            if ($("#phone").val() == "") {
+                alert("전화번호를 입력하세요")
+                $("#phone").focus();
+                return false;
+            }
+            if ($("#business_registration_number").val() == "") {
+                alert("사업자 등록번호를 입력하세요")
+                $("#business_registration_number").focus();
+                return false;
+            }
+            if ($("#address").val() == "") {
+                alert("위치를 입력하세요")
+                $("#address").focus();
+                return false;
+            }
+            if ($("#opening_hours").val() == "") {
+                alert("오픈시간을 입력하세요")
+                $("#opening_hours").focus();
+                return false;
+            }
+            if ($("#closing_hours").val() == "") {
+                alert("마감시간을 입력하세요")
+                $("#closing_hours").focus();
+                return false;
+            }
+
+            // 회원가입 정보
+            var data = {
+                branch_name: $("#branch_name").val(),
+                phone: $("#phone").val(),
+                business_registration_number: $("#business_registration_number").val(),
+                address: $("#address").val(),
+                opening_hours: $("#opening_hours").val(),
+                closing_hours: $("#closing_hours").val()
+            };
+
+            // 서버에 회원가입 요청 보내기
+            $.ajax({
+                type: "POST",
+                url: "/user/join",
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify(data),
+                success: function(response) {
+                    if (response === "success") {
+                        alert("회원가입을 축하합니다.");
+                        window.location.href = "/login"; // 로그인 페이지로 이동
+                    } else if (response === "fail") {
+                        alert("아이디 중복확인 하세요");
+                    }
+                },
+                error: function() {
+                    alert("회원가입 실패");
+                }
+            });
+        });
+    });
+    </script>
+</th:block>
+
+<div layout:fragment="content">
+    <div class="container mt-3">
+        <form action="join" method="post">
+            <div class="mb-3 mt-3">
+                <label for="branch_name">지점명:</label> <input type="text"
+                    class="form-control" id="branch_name" placeholder="Enter branch name" name="branch_name">
+            </div>
+            <div class="mb-3">
+                <label for="phone">전화번호:</label> <input type="text"
+                    class="form-control" id="phone" placeholder="Enter phone number"
+                    name="phone">
+            </div>
+            <div class="mb-3">
+                <label for="business_registration_number">사업자 등록번호:</label> <input type="text"
+                    class="form-control" id="business_registration_number" placeholder="Enter business registration number"
+                    name="business_registration_number">
+            </div>
+            <div class="mb-3">
+                <label for="address">위치:</label> <input type="text"
+                    class="form-control" id="address" placeholder="Enter Address"
+                    name="address">
+            </div>
+            <div class="mb-3">
+                <label for="opening_hours">오픈시간:</label> <input type="text"
+                    class="form-control" id="opening_hours" placeholder="Enter opening hours"
+                    name="opening_hours">
+            </div>
+            <div class="mb-3">
+                <label for="closing_hours">마감시간:</label> <input type="text"
+                    class="form-control" id="closing_hours" placeholder="Enter closing hours"
+                    name="closing_hours">
+            </div>
+            <button type="button" class="btn btn-secondary" id="btnJoin">센터등록</button>
+        </form>
+    </div>
+</div>
+</html>

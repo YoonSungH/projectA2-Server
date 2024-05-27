@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<!-- 사용자 스크립트 추가 -->
+<th:block layout:fragment="script">
+    <script>
+        $(document).ready(function(){
+            // JavaScript 코드 작성
+        });
+    </script>
+</th:block>
+
+<!-- 페이지 내용 -->
+<div layout:fragment="content">
+    <div class="container">
+        <!-- 섹션 -->
+        <div class="row mt-4">
+            <!-- 왼쪽 섹션 -->
+            <div class="col-md-6">
+                <section class="left-section d-flex flex-column justify-content-between" style="background-color: pink;">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="profile-container text-left mt-5">
+                                <img src="프로필이미지주소" alt="프로필 이미지" class="profile-image">
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="profile-info mt-5">
+                                <div class="user-box border border-dark p-3">
+                                    <h4>사용자 이름</h4>
+                                    <p>아이디: 사용자 아이디</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 버튼 -->
+                    <div class="row mt-3">
+                        <div class="col-md-12 d-flex justify-content-center">
+                            <button class="btn btn-secondary btn-lg">운동 다이어리</button>
+                        </div>
+                    </div>
+                    <!-- 추가된 버튼 -->
+                    <div class="row mt-3">
+                        <div class="col-md-12 d-flex justify-content-center">
+                            <button class="btn btn-secondary btn-lg">회원정보 수정</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- 오른쪽 섹션 -->
+            <div class="col-md-6">
+                <section class="left-section d-flex flex-column justify-content-between" style="background-color: pink;">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="profile-container text-left mt-5">
+                                <img src="프로필이미지주소" alt="프로필 이미지" class="profile-image">
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="profile-info mt-5">
+                                <div class="user-box border border-dark p-3">
+                                    <h4>지점명</h4>
+                                    <p>아이디: 사용자 아이디</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 버튼 -->
+                    <div class="row mt-3">
+                        <div class="col-md-12 d-flex justify-content-center">
+                            <button class="btn btn-secondary btn-lg">센터등록</button>
+                        </div>
+                    </div>
+                    <!-- 추가된 버튼 -->
+                    <div class="row mt-3">
+                        <div class="col-md-12 d-flex justify-content-center">
+                            <button class="btn btn-secondary btn-lg">회원정보 수정</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 사용자 스타일 추가 -->
+<style>
+    .profile-image {
+        border-radius: 50%;
+        width: 100px; /* 프로필 이미지 너비 조정 */
+        height: 100px; /* 프로필 이미지 높이 조정 */
+        object-fit: cover; /* 이미지 비율 유지 */
+    }
+    .profile-container {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* 프로필 이미지 수평 정렬 */
+    }
+    .profile-info {
+        margin-left: 20px; /* 사용자 정보와 이미지 사이 여백 조정 */
+    }
+    .user-box {
+        padding: 1rem; /* 상자 내부 여백 */
+    }
+</style>
+
+</html>

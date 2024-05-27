@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+
+<head>
+	<!-- 부트스트랩 CDN 추가 -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<!-- 폰트어썸 아이콘 CDN 추가 -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+	<style>
+		/* 추가적인 스타일 */
+		.navbar {
+			margin-bottom: 20px;
+			/* 네비바와 박스 사이 간격 추가 */
+		}
+
+		.box {
+			width: 450px;
+			/* 박스의 너비 */
+			height: 600px;
+			/* 박스의 높이 */
+			margin: 20px;
+			/* 박스 사이 간격 추가 */
+			padding: 20px;
+			float: left;
+			/* 박스를 왼쪽으로 정렬 */
+			box-sizing: border-box;
+			/* 패딩과 테두리를 포함하여 요소의 전체 크기를 지정 */
+			position: relative;
+			/* 상대 위치 설정 */
+		}
+
+		.box-content {
+			font-size: 24px;
+			text-align: center;
+		}
+
+		.btn-wrapper {
+			position: absolute;
+			/* 절대 위치 설정 */
+			bottom: 10px;
+			right: 10px;
+		}
+
+		.btn-circle {
+			border-radius: 50%;
+			padding: 10px 20px;
+			background-color: #007bff;
+			color: white;
+			border: none;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		.btn-circle i {
+			margin-right: 5px;
+		}
+
+		.btn-circle:hover {
+			background-color: #0056b3;
+		}
+
+		/* BOX1을 하늘색으로 변경 */
+		.box1 {
+			background-color: rgba(135, 206, 235, 0.5);
+			/* 하늘색 불투명한 배경 */
+		}
+
+		/* BOX2의 스타일 */
+		.box2 {
+			width: 450px;
+			/* 박스의 너비 */
+			height: 300px;
+			/* 박스의 높이 */
+			background-color: rgba(255, 255, 0, 0.5);
+			/* 노란색 불투명한 배경 */
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			padding: 20px;
+		}
+
+		/* 오른쪽 하단에 위치하는 버튼 스타일 */
+		.bottom-right-btn {
+			border-radius: 50%;
+			padding: 10px 20px;
+			background-color: #007bff;
+			color: white;
+			border: none;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		.bottom-right-btn i {
+			margin-right: 5px;
+		}
+
+		.bottom-right-btn:hover {
+			background-color: #0056b3;
+		}
+	</style>
+</head>
+
+<body>
+	<div layout:fragment="content" class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<!-- 네비바 내용 -->
+				</nav>
+			</div>
+		</div>
+		<div class="clearfix"> <!-- float 속성으로 인해 발생하는 문제 해결 -->
+			<div class="box box1"> <!-- box1 클래스 추가 -->
+				<div class="box-content">
+					내 지역 일일권 찾기
+				</div>
+				<div class="btn-wrapper">
+					<button class="btn btn-primary bottom-right-btn">
+						<a th:href="@{/user/join}">
+							<i class="fas fa-arrow-right"></i>
+						</a>
+					</button>
+				</div>
+			</div>
+			<div class="box box2"> <!-- box2 클래스 추가 -->
+				<div class="box-content">
+					개인회원 <!-- 상자 1의 내용 -->
+				</div>
+				<div class="btn-wrapper">
+					<button class="btn btn-primary bottom-right-btn">
+						<a th:href="@{/user/indilogin}">
+							<i class="fas fa-arrow-right"></i>
+						</a>
+					</button>
+				</div>
+			</div>
+			<div class="box box2"> <!-- box2 클래스 추가 -->
+				<div class="box-content">
+					피트니스 센터 & 사장님 <!-- 상자 2의 내용 -->
+				</div>
+				<div class="btn-wrapper">
+					<button class="btn btn-primary bottom-right-btn">
+						<i class="fas fa-arrow-right"></i> <!-- 화살표 아이콘 -->
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 부트스트랩 JS 추가 (선택 사항) -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<!-- 폰트어썸 아이콘 JS 추가 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
+
+</html>

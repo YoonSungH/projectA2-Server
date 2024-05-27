@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/layout1}">
+
+<div layout:fragment="content">
+    <div class="container mt-3">
+        <h2>피트니스 센터 목록([[${count }]])</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>센터명</th>
+                    <th>센터주소</th>
+                    <th>센터연락처</th>
+                    <th>일일권 가격</th>
+                    <th>운영시간</th>
+                    <th>이미지</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="board :${boards}">
+                    <td th:text="${board.centerName}"></td>
+                    <td th:text="${board.centerAddress}"></td>
+                    <td th:text="${board.centerPhone}"></td>
+                    <td th:text="${board.dailyPassPrice}"></td>
+                    <td th:text="${board.operatingHours}"></td>
+                    <td>
+                        <img th:src="@{${board.imageUrl}}" alt="Center Image" style="max-width: 100px; max-height: 100px;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-between mt-5">
+            <ul class="pagination" th:with="start=${p.startPage}, end=${p.endPage}">
+                <!-- 이전 -->
+                <li class="page-item" th:if="${p.startPage > p.blockPage}"><a class="page-link" th:href="'/list?pageNum='+${p.startPage-p.blockPage}">Previous</a></li>
+
+                <!-- 페이지번호 -->
+                <th:block th:each="page :${#numbers.sequence(start, end)}">
+                    <li class="page-item active" th:if="${p.currentPage == page}">
+                        <a class="page-link" href="#">[[${page}]]</a>
+                    </li>
+                    <li class="page-item" th:if="${p.currentPage != page}">
+                        <a class="page-link" th:href="'/list?pageNum='+${page}">[[${page}]]</a>
+                    </li>
+                </th:block>
+                <!-- 다음 -->
+                <li class="page-item" th:if="${p.endPage < p.totPage}"><a class="page-link" th:href="'/list?pageNum='+${p.endPage+1}">Next</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</html>
